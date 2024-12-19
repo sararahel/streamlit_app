@@ -44,7 +44,7 @@ if 'model.keras' not in os.listdir():
         with st.spinner('Model is being downloaded...'):
                 gdown.download(id='17NY1J-EOUzKQqTrZeVGr6IRMAUg1wZ8a')
 with st.spinner('Model is being loaded...'):
-        model=load_model()
+    model=load_model()
 
 if img_file is None:
     st.text("Please upload an image file")
