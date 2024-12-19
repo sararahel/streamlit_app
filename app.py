@@ -43,7 +43,8 @@ st.write("""
 img_file = st.file_uploader("", type=["jpg", "png"])
 
 if 'model.keras' not in os.listdir():
-  gdown.download(id='1yCX8K64iAjpGGUGfOdxLdW77dlHpaWq4')
+        with st.spinner('Model is being downloaded...'):
+                gdown.download(id='1yCX8K64iAjpGGUGfOdxLdW77dlHpaWq4')
 with st.spinner('Model is being loaded...'):
   model=load_model()
 
