@@ -18,23 +18,23 @@ def predict_image_class(image_data, model, w=128, h=128):
 
 @st.cache_resource
 def load_model():
+    #link = 'https://drive.google.com/file/d/17NY1J-EOUzKQqTrZeVGr6IRMAUg1wZ8a/view?usp=drive_link'    
     model=tf.keras.models.load_model('model.keras')
     return model
 
-
 st.set_page_config(
-    page_title="Cat Detector",
-    page_icon = ":cat:",
+    page_title= 'Brain Tumor Detector',
+    page_icon = ":brain:",
     initial_sidebar_state = 'auto'
 )
 
 with st.sidebar:
         #st.image('image_path.png')
-        st.title("Cat Detection Model")
-        st.subheader("Description of what your model is doing.")
+        st.title('Brain Tumor Detection CNN')
+        st.subheader("Cool description")
 
 st.write("""
-         # Cat Detection Tool
+         # Brain Tumor Detection Tool
          """
          )
 
@@ -42,9 +42,9 @@ img_file = st.file_uploader("", type=["jpg", "png"])
 
 if 'model.keras' not in os.listdir():
         with st.spinner('Model is being downloaded...'):
-                gdown.download(id='1yCX8K64iAjpGGUGfOdxLdW77dlHpaWq4')
+                gdown.download(id='17NY1J-EOUzKQqTrZeVGr6IRMAUg1wZ8a')
 with st.spinner('Model is being loaded...'):
-  model=load_model()
+        model=load_model()
 
 if img_file is None:
     st.text("Please upload an image file")
@@ -54,19 +54,19 @@ else:
   predictions = predict_image_class(image, model)
 
   #### FOR THIS EXAMPLE ONLY
-  top5_preds = tf.keras.applications.imagenet_utils.decode_predictions(predictions, top=5)
-  st.info(top5_preds[0])
-  top_pred = top5_preds[0][0][1]
+  #top5_preds = tf.keras.applications.imagenet_utils.decode_predictions(predictions, top=5)
+  #st.info(top5_preds[0])
+  #top_pred = top5_preds[0][0][1]
   #################
 
   string = "Detected class: " + top_pred
 
-  if 'cat' in top_pred.lower() or top_pred.lower() == 'tabby':
-    st.balloons()
-    st.sidebar.success(string)
-    st.write("""
+  #if 'cat' in top_pred.lower() or top_pred.lower() == 'tabby':
+    #st.balloons()
+    #st.sidebar.success(string)
+    #st.write("""
     # C A T""")
-  else:
-    st.sidebar.warning(string)
-    st.markdown("## Issue detected:")
-    st.info("Not a cat.")
+  #else:
+    #st.sidebar.warning(string)
+    #st.markdown("## Issue detected:")
+    #st.info("Not a cat.")
