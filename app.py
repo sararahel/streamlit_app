@@ -5,8 +5,7 @@ import tensorflow as tf
 from PIL import Image, ImageOps
 import numpy as np
 
-
-def predict_image_class(image_data, model, w=224, h=224):
+def predict_image_class(image_data, model, w=128, h=128):
         size = (w,h)
         image = ImageOps.fit(image_data, size, Image.LANCZOS)
         img = np.asarray(image)
@@ -16,7 +15,6 @@ def predict_image_class(image_data, model, w=224, h=224):
         img = np.expand_dims(img, axis=0) # for models expecting a batch
         prediction = model.predict(img)
         return prediction
-
 
 @st.cache_resource
 def load_model():
