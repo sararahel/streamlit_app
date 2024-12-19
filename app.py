@@ -55,8 +55,7 @@ else:
   predictions = predict_image_class(image, model)
 
   #### FOR THIS EXAMPLE ONLY
-  from tf.keras.applications.imagenet_utils import decode_predictions
-  top5_preds = decode_predictions(predictions, top=5)
+  top5_preds = tf.keras.applications.imagenet_utils.decode_predictions(predictions, top=5)
   st.info(top5_preds[0])
   top_pred = top5_preds[0][0][1]
   #################
